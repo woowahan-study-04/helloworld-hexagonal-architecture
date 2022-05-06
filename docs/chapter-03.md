@@ -7,10 +7,10 @@
 
 <br>
 
-### 03-1. 계층으로 구성하기
+## 1. 계층으로 구성하기
 
----
-![](../../../../../var/folders/6q/w2bp94gn4k3bnv6ttdvt6gzr0000gn/T/TemporaryItems/NSIRD_screencaptureui_xiTNkJ/스크린샷 2022-05-06 오후 10.41.51.png)
+
+<img width="311" alt="스크린샷 2022-05-07 오전 1 10 11" src="https://user-images.githubusercontent.com/35520314/167171131-c34594da-e37c-4ed4-84f1-de7a079a7683.png">
 
 웹, 도메인, 영속성 계층으로 패키지 구조를 나누어보았다.
 
@@ -27,27 +27,28 @@
 <br>
 
 
-### 03-2. 기능으로 나누면 괜찮아질까?
+
+## 2. 기능으로 나누면 괜찮아질까?
 <br>
+
 계좌 패키지에 관련된 모든 코드를 넣어보자. <br>
+
 그리고 패키지 별로 package-private 접근 수준으로 경계를 강화하면, 각 기능 별로 불필요한 의존성을 방지할 수 있다.
 (kotlin 기준 internal로 제한해보았다.)
 
-![](../../../../../var/folders/6q/w2bp94gn4k3bnv6ttdvt6gzr0000gn/T/TemporaryItems/NSIRD_screencaptureui_RHPDO0/스크린샷 2022-05-06 오후 11.07.12.png)
+
+<img width="313" alt="스크린샷 2022-05-07 오전 1 10 42" src="https://user-images.githubusercontent.com/35520314/167171209-391d3da0-b552-4a95-8b48-91eda5815bbe.png">
 
 그러나 같은 패키지 안에 모든 코드들을 넣어두면, 패키지 수준에서 막는 방지효과를 기대할 수 없다. <br>
-
 같은 패키지 안에 있기 때문에 AccountRepository랑 Impl을 나눠놨어도 Service에서는 Impl에 접근할 수 있기 때문이다. 
 
 새로운 개발자가 와서 Service에 냅다 Impl을 호출해서 사용해도 코드는 잘 돌아간다. 그 코드를 수정해야하기 전까지는,,,
 
 <br>
-<br>
-<br>
 
----
 
-### 03-3. 패키지 구조로 아키텍처를 표현해보자!
+
+## 3. 패키지 구조로 아키텍처를 표현해보자!
 
 <br>
 
@@ -63,7 +64,7 @@
 <br>
 
 
-![](../../../../../var/folders/6q/w2bp94gn4k3bnv6ttdvt6gzr0000gn/T/TemporaryItems/NSIRD_screencaptureui_cB7IEE/스크린샷 2022-05-07 오전 12.06.58.png)
+<img width="446" alt="스크린샷 2022-05-07 오전 1 12 29" src="https://user-images.githubusercontent.com/35520314/167171501-aa64b470-3f9f-405f-b31b-08a2ec0a7a41.png">
 
 이렇게 표현력 있게 나눠놓은 패키지 구조는 다음과 같은 장점이 있다.
 
@@ -78,9 +79,9 @@
 
 <br>
 
----
 
-### 03-4. 의존성 주입의 역할
+
+## 4. 의존성 주입의 역할
 
 
 |  클린 아키텍처의 요건은 application 계층은 in,out 어댑터에 의존성을 갖지 않는 것이다.
@@ -99,7 +100,8 @@
   - out 포트를 구현한 영속성 어댑터가 있다.
 
 
-![](../../../../../var/folders/6q/w2bp94gn4k3bnv6ttdvt6gzr0000gn/T/TemporaryItems/NSIRD_screencaptureui_3LDXCa/스크린샷 2022-05-07 오전 12.59.05.png)
+<img width="647" alt="스크린샷 2022-05-07 오전 1 11 16" src="https://user-images.githubusercontent.com/35520314/167171296-17114cc1-c3be-4b81-ae80-942a206e200f.png">
+
 
 
 <br>
@@ -109,5 +111,6 @@
 
 참고문헌 <br>
 
-https://github.com/thombergs/buckpal
-https://kotlinlang.org/docs/visibility-modifiers.html
+https://github.com/thombergs/buckpal <br>
+https://kotlinlang.org/docs/visibility-modifiers.html <br>
+https://github.com/Meet-Coder-Study/Get-Your-Hands-Dirty-on-Clean-Architecture/blob/main/chapter3/jiaekim.md
